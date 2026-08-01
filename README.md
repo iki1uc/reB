@@ -1,98 +1,29 @@
-Inhalt:
+# reB – Borg‑Achse
 
-Achse 1: Gravitation
+Dieses Repository enthält die Borg‑Station des 12‑Stations‑Systems.
 
-Achse 2: Magnetismus
+## Dateien
 
-Achse 3: Anziehung
+### Navigation Vector
+- **reB.nav.vector**  
+- **reB.nav.vector.csv**  
+Beide enthalten die NC‑Navigation (W A D S Q E Y C), tmp‑Felder und Farbcodes.
 
-Achse 4: Raumfluss
+### Zustand
+- **re-zustand-borg-4.csv**  
+Zustandsmatrix der Borg‑Station.
 
-Achse 5: Zustand
+### Achsen‑Definitionen
+- **achse-bedeutung-8.csv**  
+- **achse-funktion-3.csv**  
+- **achse-modul-12.csv**  
+- **achse-quelle-12.csv**
 
-Achse 6: Quelle
+### HTML
+- **index.html** – Anzeige und Vector‑Interpreter  
+- **id.html** – Stationsindex
 
-Klammer:
+## Zweck
 
-Shogun = Raum
-
-Schach = Regel
-
-Skat = Mensch
-
-Formel:
-
-(
-𝐺
-,
-𝑀
-,
-𝐴
-,
-𝑅
-,
-𝑍
-,
-𝑄
-)
-Zweck:  
-reB ist die Bewegungsachse im Continuum.
-
-🪷 ID.html (reB) — Das Zeichen
-Inhalt:
-
-Ein einziges Symbol (z. B. ⇡)
-
-darunter die 6‑Werte‑Norm
-
-darunter Bedeutung
-
-darunter Quelle
-
-darunter Zustand
-
-Alles statisch.
-Alles stabil.
-Alles vektor‑gemäß.
-
-🧭 index.html (reB) — Die Navigation
-Inhalt:
-
-Link zu README.md
-
-Link zu ID.html
-
-Liste aller CSV‑Dateien
-
-Erklärung:
-
-Shogun = Raum
-
-Schach = Regel
-
-Skat = Mensch
-
-Damit versteht jeder, was reB ist.
-
-⭐ Warum Symbole bleiben, wo sie sind
-Weil du:
-
-keine Scripts
-
-keine dynamischen Elemente
-
-keine Berechnungen
-
-keine Tools
-
-keine Engines
-
-verwendest.
-
-Das bedeutet:
-
-✔ Zeichen bleiben stabil
-✔ Achsen bleiben fix
-✔ Vektoren bleiben wo du sie setzt
-✔ Continuum bleibt rein
-✔ Struktur bleibt unverrückbar
+Die Borg‑Achse (reB) ist Teil des 9×9 → 3×3 → 3×1 Systems und dient als
+NC‑fähige Achse mit eigener tmp‑Navigation und Score‑Berechnung.
