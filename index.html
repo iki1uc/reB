@@ -1,3 +1,74 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<title>reB – Borg Navigation Vector</title>
+
+<style>
+body {
+  font-family: serif;
+  background: #fafafa;
+  padding: 40px;
+  color: #222;
+}
+
+.section {
+  margin: 20px auto;
+  max-width: 900px;
+  padding: 20px;
+  border-left: 4px solid #444;
+  background: white;
+}
+
+.karo {
+  width: 20px;
+  height: 20px;
+  display: inline-block;
+  margin-right: 10px;
+  border: 1px solid #333;
+}
+
+.point {
+  font-size: 14px;
+  color: #333;
+}
+</style>
+</head>
+
+<body>
+
+<h1>reB – Borg Navigation Vector</h1>
+
+<div class="section">
+  <h2>Dateien</h2>
+  <ul>
+    <li><a href="reB.nav.vector">reB.nav.vector</a></li>
+    <li><a href="reB.nav.vector.csv">reB.nav.vector.csv</a></li>
+    <li><a href="re-zustand-borg-4.csv">re‑Zustand Borg</a></li>
+  </ul>
+</div>
+
+<div class="section">
+  <h2>reB.nav.vector – Anzeige</h2>
+  <div id="reB"></div>
+</div>
+
+<script type="module">
+
+// CSV Loader
+async function loadCSV(path) {
+  const text = await fetch(path).then(r => r.text());
+  const lines = text.trim().split("\n");
+  const header = lines[0].split(";");
+  return lines.slice(1).map(line => {
+    const cols = line.split(";");
+    const obj = {};
+    header.forEach((h, i) => obj[h] = cols[i]);
+    return obj;
+  });
+}
+
+// Vector Interpreter
 function interpretVector(row) {
   return {
     id: row.id,
@@ -35,3 +106,23 @@ function interpretVector(row) {
     ]
   };
 }
+
+// Load reB.nav.vector.csv
+const reBraw = await loadCSV("./reB.nav.vector.csv");
+const reB = reBraw.map(interpretVector);
+
+// Render
+document.getElementById("reB").innerHTML =
+  reB.map(v =>
+    `<div class="karo" style="background:${v.color}"></div>
+     <span class="point">
+       id:${v.id} | tmp:${v.tmp} | sym:${v.sym} |
+       x:${v.axis.x} y:${v.axis.y} z:${v.axis.z} rot:${v.axis.rot} |
+       score:${v.score}
+     </span><br>`
+  ).join("");
+
+</script>
+
+</body>
+</html>
